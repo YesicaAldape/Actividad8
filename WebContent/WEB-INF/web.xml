@@ -46,6 +46,7 @@
   </filter-mapping>
  
   <!-- Escribe aquí tu código -->
+  
   <filter>
     <filter-name>authorizationFilter</filter-name>
     <filter-class>me.jmll.filter.Authorization</filter-class>

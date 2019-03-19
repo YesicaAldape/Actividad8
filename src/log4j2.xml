@@ -30,6 +30,7 @@
         <Logger name="me.jmll.filter.Authorization" level="TRACE">
         	<appender-ref ref="LogFile"/>
         </Logger>
+        
         <!-- Escribe aquí tu código -->
 		<Logger name="me.jmll.filter.RateLimit" level="TRACE">
         	<appender-ref ref="LogFile"/>

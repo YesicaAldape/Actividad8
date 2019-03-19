@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 public class RateLimit implements Filter {
 	// Escribe aquí tu código {
 
-    // }
+    
 	private static final Logger logger = LogManager.getLogger();
 	
 	private int req_limit = 5;
@@ -39,11 +39,11 @@ public class RateLimit implements Filter {
 	final String TIME_LIMIT = "TIME-LIMIT";
 	
 	
-	private String XRATE_LIMIT = "X-RareLimit-Limit";
-	private String _REMAINING = "X-RareLimit-Limit-Remaining";
-	private String XRATE_LIMIT_RESET = "X-RareLimit-Reset";
+	private String XRATE_LIMIT = "X-RateLimit-Limit";
+	private String XRATE_LIMIT_REMAINING = "X-RateLimit-Remaining";
+	private String XRATE_LIMIT_RESET = "X-RateLimit-Reset";
 
-
+	// }
 	
     /**
      * Default constructor. 
@@ -118,8 +118,8 @@ public class RateLimit implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
         // Carga configuración de parámetros de inicio
     	// Escribe aquí tu código {
-    	req_limit  = Integer.parseInt(fConfig.getInitParameter(REQ_LIMIT));
-    	time_limit  = Integer.parseInt(fConfig.getInitParameter(TIME_LIMIT));
+    	req_limit = Integer.parseInt(fConfig.getInitParameter(REQ_LIMIT));
+    	time_limit = Integer.parseInt(fConfig.getInitParameter(TIME_LIMIT));
         // }
         logger.info("Iniciando {} con REQ_LIMIT={} TIME_LIMIT={}", RateLimit.class.getName(), req_limit, time_limit);
     }
