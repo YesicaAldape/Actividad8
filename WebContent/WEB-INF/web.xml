@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>CS13304</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>tema</param-name>
+    <param-value>Filtros</param-value>
+  </context-param>
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+    <cookie-config>
+      <http-only>true</http-only>
+    </cookie-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <include-prelude>/WEB-INF/includes/base.jsp</include-prelude>
+      <default-content-type>text/html</default-content-type>
+    </jsp-property-group>
+  </jsp-config>
+  <!-- Escribe aquí tu código -->
+  <filter>
+    <filter-name>RateLimitFilter</filter-name>
+    <filter-class>me.jmll.filter.RateLimit</filter-class>
+
+	  <init-param>
+	  	<param-name>REQ_LIMIT</param-name>
+	  	<param-value>5</param-value>
+	  </init-param>
+	  <init-param>
+	  	<param-name>TIME_LIMIT</param-name>
+	  	<param-value>15000</param-value>
+	  </init-param>
+ 
+ </filter>
+ 
+  <filter-mapping>
+    <filter-name>RateLimitFilter</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+ 
+  <!-- Escribe aquí tu código -->
+  <filter>
+    <filter-name>authorizationFilter</filter-name>
+    <filter-class>me.jmll.filter.Authorization</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>authorizationFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <distributable/>
+</web-app>
